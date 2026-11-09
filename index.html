@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Estoque - POO</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Sistema de Estoque</h1>
+
+        <p class="subtitulo">Gerenciamento de Produtos</p>
+
+        <form id="produto-form">
+
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" placeholder="Digite o nome do produto">
+
+            <label for="preco">Preço Unitário:</label>
+            <input type="number" id="preco" step="0.01" placeholder="Digite o preço">
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" placeholder="Digite a quantidade">
+
+            <button type="submit" class="btn-primary">
+                Adicionar Produto
+            </button>
+
+        </form>
+
+        <div class="resumo">
+            <h2>Total em Estoque</h2>
+            <p id="total-estoque">R$ 0,00</p>
+        </div>
+
+        <h2>Produtos Cadastrados</h2>
+
+        <!-- Campo de pesquisa V4 -->
+        <div class="grupo-busca">
+
+            <label for="campo-busca">Pesquisar Produto:</label>
+
+            <input
+                type="text"
+                id="campo-busca"
+                placeholder="Digite o nome do produto..."
+            >
+
+        </div>
+
+        <table id="tabela-produtos">
+
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço Un.</th>
+                    <th>Qtd.</th>
+                    <th>Subtotal</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+        </table>
+
+        <button id="limpar-tabela" class="btn-limpar">
+            Limpar Estoque
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

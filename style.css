@@ -1,0 +1,271 @@
+/* Configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    /* IMAGEM DE FUNDO */
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.80),
+            rgba(80, 0, 0, 0.80)
+        ),
+        url("fundo.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* Container principal */
+.container {
+    width: 90%;
+    max-width: 900px;
+
+    background: rgba(23, 23, 23, 0.95);
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    border: 2px solid #8b0000;
+
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+
+/* Títulos */
+h1 {
+    text-align: center;
+    color: #e60000;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #e60000;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+input {
+    padding: 12px;
+
+    border: 1px solid #555;
+    border-radius: 8px;
+
+    background: #252525;
+    color: white;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: #e60000;
+}
+
+
+/* Campo de pesquisa V4 */
+.grupo-busca {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.grupo-busca input {
+    width: 100%;
+    padding: 13px;
+
+    background: #252525;
+    color: white;
+
+    border: 1px solid #555;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.grupo-busca input:focus {
+    border-color: #e60000;
+
+    box-shadow: 0 0 5px rgba(230, 0, 0, 0.4);
+}
+
+
+/* Botões */
+button {
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #8b0000;
+    color: white;
+    margin-top: 15px;
+}
+
+.btn-primary:hover {
+    background: #e60000;
+}
+
+
+/* Resumo */
+.resumo {
+    background: #252525;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+.resumo p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #e60000;
+}
+
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #222;
+}
+
+th {
+    background: #8b0000;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+tr:hover {
+    background: #333;
+}
+
+
+/* Mensagem de produto não encontrado */
+.mensagem-vazia {
+    text-align: center;
+
+    padding: 20px;
+
+    color: #aaa;
+
+    font-style: italic;
+}
+
+
+/* Botão editar */
+.btn-editar {
+    background: #555;
+    color: white;
+    margin: 3px;
+}
+
+.btn-editar:hover {
+    background: #777;
+}
+
+
+/* Botão remover */
+.btn-remover {
+    background: #8b0000;
+    color: white;
+    margin: 3px;
+}
+
+.btn-remover:hover {
+    background: #e60000;
+}
+
+
+/* Botão limpar */
+.btn-limpar {
+    width: 100%;
+    background: #8b0000;
+    color: white;
+    margin-top: 20px;
+}
+
+.btn-limpar:hover {
+    background: #e60000;
+}
+
+
+/* Responsividade */
+@media (max-width: 650px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+
+}
