@@ -28,6 +28,9 @@ const botaoLimpar = document.getElementById("limpar-tabela");
 const botaoEnviar = document.querySelector(".btn-primary");
 const campoBusca = document.getElementById("campo-busca");
 
+const campoNome = document.getElementById("nome");
+const sugestoesProdutos = document.getElementById("sugestoes-produtos");
+
 
 // Carregar produtos salvos
 const produtosSalvos = localStorage.getItem("produtos");
@@ -80,11 +83,9 @@ function renderizarTabela() {
 
     tabelaProdutos.innerHTML = "";
 
-    // Obter somente os produtos encontrados na pesquisa
     const produtosFiltrados = obterProdutosFiltrados();
 
-
-    // Calcular o total somente dos produtos visíveis
+    // Calcular o total dos produtos visíveis
     const total = produtosFiltrados.reduce(
         (soma, item) => soma + item.produto.calcularSubtotal(),
         0
@@ -111,6 +112,7 @@ function renderizarTabela() {
             const produto = item.produto;
             const index = item.index;
             const subtotal = produto.calcularSubtotal();
+
             let linha = document.createElement("tr");
 
             linha.innerHTML = `
@@ -146,7 +148,7 @@ function renderizarTabela() {
 }
 
 
-// Evento de pesquisa dinâmica
+// Pesquisa dinâmica da tabela
 campoBusca.addEventListener("input", function() {
 
     renderizarTabela();
@@ -154,12 +156,114 @@ campoBusca.addEventListener("input", function() {
 });
 
 
-// Cadastro e edição de produtos
+// ======================================
+// SUGESTÕES DE PRODUTOS
+// ======================================
+
+
+// Mostrar sugestões de produtos cadastrados
+function mostrarSugestoes() {
+
+    const termo = campoNome.value.toLowerCase().trim();
+
+    sugestoesProdutos.innerHTML = "";
+
+    if (termo === "") {
+
+        sugestoesProdutos.style.display = "none";
+        return;
+
+    }
+
+
+    // Procurar produtos correspondentes
+    const produtosEncontrados = listaDeProdutos
+
+        .map((produto, index) => ({
+            produto: produto,
+            index: index
+        }))
+
+        .filter(item =>
+            item.produto.nome.toLowerCase().includes(termo)
+        );
+
+
+    if (produtosEncontrados.length === 0) {
+
+        sugestoesProdutos.style.display = "none";
+        return;
+
+    }
+
+
+    // Criar sugestões
+    produtosEncontrados.forEach(item => {
+
+        const sugestao = document.createElement("div");
+
+        sugestao.classList.add("sugestao-produto");
+
+        sugestao.textContent = item.produto.nome;
+
+        sugestao.dataset.index = item.index;
+
+        sugestoesProdutos.appendChild(sugestao);
+
+    });
+
+
+    sugestoesProdutos.style.display = "block";
+
+}
+
+
+// Mostrar sugestões enquanto digita
+campoNome.addEventListener("input", function() {
+
+    mostrarSugestoes();
+
+});
+
+
+// Selecionar produto pela sugestão
+sugestoesProdutos.addEventListener("click", function(event) {
+
+    if (event.target.classList.contains("sugestao-produto")) {
+
+        const index = Number(event.target.dataset.index);
+
+        prepararEdicao(index);
+
+        sugestoesProdutos.style.display = "none";
+
+    }
+
+});
+
+
+// Fechar sugestões ao clicar fora
+document.addEventListener("click", function(event) {
+
+    if (!event.target.closest(".campo-nome")) {
+
+        sugestoesProdutos.style.display = "none";
+
+    }
+
+});
+
+
+// ======================================
+// CADASTRO E EDIÇÃO DE PRODUTOS
+// ======================================
+
+
 formProduto.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    const nome = document.getElementById("nome").value.trim();
+    const nome = campoNome.value.trim();
 
     const preco = parseFloat(document.getElementById("preco").value);
 
@@ -171,18 +275,24 @@ formProduto.addEventListener("submit", function(event) {
 
     // Validação dos campos
     if (nome === "") {
+
         alert("Coloque um nome válido no seu produto!");
         return;
+
     }
 
     if (isNaN(preco) || preco <= 0) {
+
         alert("Digite um preço válido!");
         return;
+
     }
 
     if (isNaN(quantidade) || quantidade <= 0) {
+
         alert("Digite uma quantidade válida!");
         return;
+
     }
 
 
@@ -208,6 +318,8 @@ formProduto.addEventListener("submit", function(event) {
 
     formProduto.reset();
 
+    sugestoesProdutos.style.display = "none";
+
     indiceEdicao = null;
 
     botaoEnviar.textContent = "Adicionar Produto";
@@ -222,8 +334,10 @@ function prepararEdicao(index) {
 
     const produto = listaDeProdutos[index];
 
-    document.getElementById("nome").value = produto.nome;
+    campoNome.value = produto.nome;
+
     document.getElementById("preco").value = produto.preco;
+
     document.getElementById("quantidade").value = produto.quantidade;
 
     botaoEnviar.textContent = "Salvar Alterações";
@@ -231,7 +345,11 @@ function prepararEdicao(index) {
 }
 
 
-// Editar e remover produtos
+// ======================================
+// EDITAR E REMOVER PELA TABELA
+// ======================================
+
+
 tabelaProdutos.addEventListener("click", function(event) {
 
     const index = Number(event.target.dataset.index);
@@ -258,6 +376,8 @@ tabelaProdutos.addEventListener("click", function(event) {
 
             formProduto.reset();
 
+            sugestoesProdutos.style.display = "none";
+
             indiceEdicao = null;
 
             botaoEnviar.textContent = "Adicionar Produto";
@@ -273,7 +393,11 @@ tabelaProdutos.addEventListener("click", function(event) {
 });
 
 
-// Limpar todo o estoque
+// ======================================
+// LIMPAR TODO O ESTOQUE
+// ======================================
+
+
 botaoLimpar.addEventListener("click", function() {
 
     if (confirm("Deseja realmente limpar todo o estoque?")) {
@@ -287,6 +411,8 @@ botaoLimpar.addEventListener("click", function() {
         renderizarTabela();
 
         formProduto.reset();
+
+        sugestoesProdutos.style.display = "none";
 
         botaoEnviar.textContent = "Adicionar Produto";
 

@@ -21,7 +21,19 @@
         <form id="produto-form">
 
             <label for="nome">Nome do Produto:</label>
-            <input type="text" id="nome" placeholder="Digite o nome do produto">
+
+            <div class="campo-nome">
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite o nome do produto"
+                    autocomplete="off"
+                >
+
+                <div id="sugestoes-produtos"></div>
+
+            </div>
 
             <label for="preco">Preço Unitário:</label>
             <input type="number" id="preco" step="0.01" placeholder="Digite o preço">
@@ -42,7 +54,6 @@
 
         <h2>Produtos Cadastrados</h2>
 
-        <!-- Campo de pesquisa V4 -->
         <div class="grupo-busca">
 
             <label for="campo-busca">Pesquisar Produto:</label>
@@ -75,6 +86,13 @@
         <button id="limpar-tabela" class="btn-limpar">
             Limpar Estoque
         </button>
+
+        <!-- Foto no rodapé -->
+        <div class="foto-rodape">
+
+            <img src="minha-foto.jpg" alt="Foto do desenvolvedor">
+
+        </div>
 
     </div>
 
