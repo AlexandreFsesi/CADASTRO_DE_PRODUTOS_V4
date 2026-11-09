@@ -309,53 +309,29 @@ tr:hover {
     margin-bottom: 5px;
 }
 
-/* Foto circular com borda vermelha */
-.foto-rodape img {
-    width: 120px;
-    height: 120px;
+/* Foto no rodapé */
+.foto-rodape {
+    width: 130px;
+    height: 130px;
+
+    margin: 35px auto 5px;
 
     border-radius: 50%;
-
-    object-fit: cover;
+    overflow: hidden;
 
     border: 4px solid #8b0000;
 
-    box-shadow:
-        0 0 10px rgba(230, 0, 0, 0.5),
-        0 0 20px rgba(139, 0, 0, 0.3);
-
-    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.5);
 }
 
-/* Efeito ao passar o mouse */
-.foto-rodape img:hover {
-    transform: scale(1.08);
+/* Imagem dentro do círculo */
+.foto-rodape img {
+    width: 100% !important;
+    height: 100% !important;
 
-    box-shadow:
-        0 0 15px rgba(230, 0, 0, 0.8),
-        0 0 25px rgba(139, 0, 0, 0.6);
-}
+    display: block;
 
+    object-fit: cover;
 
-/* Responsividade */
-@media (max-width: 650px) {
-
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 15px;
-        overflow-x: auto;
-    }
-
-    table {
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 7px;
-    }
-
+    border-radius: 50%;
 }
