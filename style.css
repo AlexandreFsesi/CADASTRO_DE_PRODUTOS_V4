@@ -1,3 +1,4 @@
+
 /* Configurações gerais */
 * {
     margin: 0;
@@ -334,4 +335,187 @@ tr:hover {
     object-fit: cover;
 
     border-radius: 50%;
+}
+
+
+/* ================================= */
+/* NOVOS ESTILOS - VERSÃO 5 */
+/* ================================= */
+
+
+/* Mensagens de erro inline */
+#mensagem-erro {
+    display: none;
+
+    background: rgba(139, 0, 0, 0.20);
+
+    color: #ff5555;
+
+    border: 1px solid #e60000;
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* Botão Conceito Bootstrap */
+.btn-bootstrap {
+    display: block;
+
+    margin: 0 auto 25px;
+
+    background: #8b0000;
+
+    color: white;
+
+    border: 1px solid #e60000;
+}
+
+.btn-bootstrap:hover {
+    background: #e60000;
+
+    box-shadow: 0 0 10px rgba(230, 0, 0, 0.5);
+}
+
+
+/* Fundo do modal */
+.modal-fundo {
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.80);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+}
+
+
+/* Conteúdo do modal */
+.modal-conteudo {
+    background: #171717;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 2px solid #8b0000;
+
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.4);
+
+    text-align: center;
+
+    animation: aparecerModal 0.3s ease;
+}
+
+
+/* Título do modal */
+.modal-conteudo h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    color: #e60000;
+}
+
+
+/* Texto do modal */
+.modal-conteudo p {
+    color: #ddd;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+/* Botões do modal */
+.modal-botoes {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+/* Botão cancelar */
+.btn-modal-cancelar {
+    background: #444;
+
+    color: white;
+}
+
+.btn-modal-cancelar:hover {
+    background: #666;
+}
+
+
+/* Botão confirmar */
+.btn-modal-confirmar {
+    background: #8b0000;
+
+    color: white;
+}
+
+.btn-modal-confirmar:hover {
+    background: #e60000;
+}
+
+
+/* Animação do modal */
+@keyframes aparecerModal {
+
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+
+    .container {
+        width: 100%;
+        padding: 18px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+
+    .modal-conteudo {
+        padding: 20px;
+    }
+
 }

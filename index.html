@@ -17,7 +17,7 @@
         <h1>CADASTRO DE PRODUTOS</h1>
 
         <p class="subtitulo">Cadastrando os Produtos</p>
-
+        
         <form id="produto-form">
 
             <label for="nome">Nome do Produto:</label>
@@ -40,6 +40,9 @@
 
             <label for="quantidade">Quantidade:</label>
             <input type="number" id="quantidade" placeholder="Digite a quantidade">
+
+            <!-- NOVO: Mensagem de erro inline -->
+            <div id="mensagem-erro"></div>
 
             <button type="submit" class="btn-primary">
                 Adicionar Produto
@@ -87,11 +90,37 @@
             Limpar Estoque
         </button>
 
-        <!-- Foto no rodapé -->
         <div class="foto-rodape">
 
             <img src="minha-foto.jpg" alt="Foto do desenvolvedor">
-            
+
+        </div>
+
+    </div>
+
+    <!-- NOVO: Modal de confirmação e conceito Bootstrap -->
+    <div id="modal-fundo" class="modal-fundo">
+
+        <div class="modal-conteudo">
+
+            <h2 id="modal-titulo">Confirmar ação</h2>
+
+            <p id="modal-mensagem">
+                Deseja realmente continuar?
+            </p>
+
+            <div class="modal-botoes">
+
+                <button type="button" id="modal-cancelar" class="btn-modal-cancelar">
+                    Cancelar
+                </button>
+
+                <button type="button" id="modal-confirmar" class="btn-modal-confirmar">
+                    Confirmar
+                </button>
+
+            </div>
+
         </div>
 
     </div>
