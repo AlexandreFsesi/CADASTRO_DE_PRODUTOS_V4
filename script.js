@@ -115,6 +115,8 @@ modalConfirmar.addEventListener("click", function() {
 
 });
 
+
+
 // NOVO: Fechar modal clicando fora
 modalFundo.addEventListener("click", function(event) {
 
